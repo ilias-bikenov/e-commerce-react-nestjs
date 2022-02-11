@@ -1,13 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { config } from 'dotenv';
 import { Logger } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { config } from 'process';
 
 async function bootstrap() {
-  config();
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 3000;
   const app = await NestFactory.create(AppModule);
+  const docConfig = new DocumentBuilder()
+    .setTitle('E-commerce')
+    .setDescription('REST API documentation')
+    .setVersion('1.0.0')
+    .addTag('Ilias Bikenov')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, docConfig);
+  //go to url/api/docs to see REST API documentation
+  SwaggerModule.setup('/api/docs', app, document);
+
   await app.listen(PORT, () => Logger.log(`Server listening on port ${PORT}`));
-  
 }
 bootstrap();

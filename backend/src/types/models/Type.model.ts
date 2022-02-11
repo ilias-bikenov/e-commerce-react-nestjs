@@ -1,13 +1,13 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
-import { ItemEntity } from './Item.entity';
+import { Item } from 'src/items/models/Item.model';
 
 @Table({
   tableName: 'types',
 })
-export class TypeEntity extends Model {
+export class Type extends Model {
   @Column({ type: 'text' })
   name: string;
 
-  @HasMany(() => ItemEntity)
-  items: ItemEntity[];
+  @HasMany(() => Item)
+  items: Item[];
 }
