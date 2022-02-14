@@ -24,14 +24,12 @@ export class AuthService {
 
   async signUp(userDto: CreateUserDto) {
     const userByEmail = await this.usersService.getUserByEmail(userDto.email);
-
     if (userByEmail) {
       throw new HttpException(
         'User with this email already exists',
         HttpStatus.BAD_REQUEST,
       );
     }
-
     const hashedPassword = await bcrypt.hash(userDto.password, 5);
     const user = await this.usersService.createUser({
       ...userDto,
@@ -46,8 +44,12 @@ export class AuthService {
       token: this.jwtService.sign(payload),
     };
   }
+
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.usersService.getUserByEmail(userDto.email);
+    console.log(userDto);
+    console.log(user);
+
     const passwordEquals = await bcrypt.compare(
       userDto.password,
       user.password,

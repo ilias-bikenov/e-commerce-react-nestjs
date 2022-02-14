@@ -31,10 +31,6 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: 'text' })
   password: string;
 
-  @ApiProperty({ description: 'User role, default: USER' })
-  @Column({ type: 'text', defaultValue: 'USER' })
-  role: string;
-
   @HasOne(() => Cart)
   cart: Cart;
 

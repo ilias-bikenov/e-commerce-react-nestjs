@@ -3,13 +3,15 @@ import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/users/dto/createUser.dto';
 import { AuthService } from './auth.service';
 
-@ApiTags('Authorization')
+@ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('sign-in')
   signIn(@Body() userDto: CreateUserDto) {
+    console.log(userDto);
+
     return this.authService.signIn(userDto);
   }
 
