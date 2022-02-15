@@ -1,7 +1,9 @@
 import {
+  BelongsTo,
   Column,
   ForeignKey,
   HasMany,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
@@ -10,16 +12,17 @@ import { CartItem } from './CartItem.model';
 import { ItemInfo } from './ItemInfo.model';
 import { Rating } from './Rating.model';
 
-// interface ItemCreationAttr {
-//   email: string;
-//   password: string;
-// }
+interface ItemCreationAttrs {
+  name: string;
+  price: number;
+  img: string;
+}
 
 @Table({
   tableName: 'items',
 })
-export class Item extends Model<Item> {
-  @Column({ type: 'text', unique: true })
+export class Item extends Model<Item, ItemCreationAttrs> {
+  @Column({ type: 'text' })
   name: string;
 
   @Column({ type: 'int' })
@@ -32,7 +35,7 @@ export class Item extends Model<Item> {
   img: string;
 
   @ForeignKey(() => Type)
-  @Column({ field: 'type_id' })
+  @Column({ type: 'integer', field: 'type_id' })
   typeId: number;
 
   @HasMany(() => Rating)
@@ -41,7 +44,6 @@ export class Item extends Model<Item> {
   @HasMany(() => ItemInfo)
   itemInfos: ItemInfo[];
 
-  @ForeignKey(() => CartItem)
-  @Column({ field: 'cart_item_id' })
+  @HasMany(() => CartItem)
   cartItemId: number;
 }

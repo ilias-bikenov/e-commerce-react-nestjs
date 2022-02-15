@@ -1,17 +1,7 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Req,
-  UseGuards,
-  UsePipes,
-} from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from 'src/auth/jwtAuth.guard';
 import { Roles } from 'src/auth/roleAuth.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
-import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { addRoleDto } from './dto/addRole.dto';
 import { CreateUserDto } from './dto/createUser.dto';
 import { User } from './models/User.model';
@@ -33,7 +23,7 @@ export class UserController {
   @ApiResponse({ status: 200, type: [User] })
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
-  @Get('')
+  @Get()
   getAllUsers() {
     return this.userService.getAllUsers();
   }

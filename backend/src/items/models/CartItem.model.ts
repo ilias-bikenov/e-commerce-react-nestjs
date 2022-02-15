@@ -7,9 +7,10 @@ import { Item } from './Item.model';
 })
 export class CartItem extends Model {
   @ForeignKey(() => Cart)
-  @Column({ field: 'user_id' })
-  userId: number;
+  @Column({ type: 'integer', field: 'cart_id' })
+  cartId: number;
 
-  @HasOne(() => Item)
-  item: number;
+  @ForeignKey(() => Item)
+  @Column({ type: 'integer', field: 'user_id' })
+  itemId: number;
 }
