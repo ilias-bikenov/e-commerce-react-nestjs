@@ -4,6 +4,7 @@ import {
   Get,
   Param,
   Post,
+  Query,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -16,14 +17,15 @@ export class ItemController {
   constructor(private itemService: ItemService) {}
 
   @Get()
-  getAllItems() {
-    return this.itemService.getAllItems();
+  getAllItems(@Query() query) {
+    const { typeId, limit, page } = query;
+    return this.itemService.getAllItems(typeId, page, limit);
   }
 
   @Post()
   @UseInterceptors(FileInterceptor('image'))
-  addItem(@Body() dto: CreateItemDto, @UploadedFile() image: any) {
-    return this.itemService.addItem(dto, image);
+  addItem(@Body() itemDto: CreateItemDto, @UploadedFile() image: any) {
+    return this.itemService.addItem(itemDto, image);
   }
 
   @Get(':id')

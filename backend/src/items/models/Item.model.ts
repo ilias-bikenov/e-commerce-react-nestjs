@@ -1,14 +1,11 @@
 import {
-  BelongsTo,
   Column,
   ForeignKey,
   HasMany,
-  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { Type } from 'src/types/models/Type.model';
-import { CartItem } from './CartItem.model';
 import { ItemInfo } from './ItemInfo.model';
 import { Rating } from './Rating.model';
 
@@ -42,8 +39,5 @@ export class Item extends Model<Item, ItemCreationAttrs> {
   ratings: Rating[];
 
   @HasMany(() => ItemInfo)
-  itemInfos: ItemInfo[];
-
-  @HasMany(() => CartItem)
-  cartItemId: number;
+  itemInfo: ItemInfo[];
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateItemDto {
   @ApiProperty({ description: 'Product name' })
@@ -13,4 +13,10 @@ export class CreateItemDto {
   @ApiProperty({ description: 'Type id' })
   @IsNotEmpty({ message: 'Should not be empty' })
   readonly typeId: number;
+
+  @ApiProperty({ description: 'Product info title' })
+  readonly title: string;
+
+  @ApiProperty({ description: 'Product info description' })
+  readonly description: string;
 }
