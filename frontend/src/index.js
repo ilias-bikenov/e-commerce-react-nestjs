@@ -1,18 +1,23 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './store';
+import UserStore from './store/userStore';
+import ItemStore from './store/itemStore';
+
+export const Context = createContext(null);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
-  document.getElementById('root'),
+  <Context.Provider
+    value={{
+      user: new UserStore(),
+      item: new ItemStore(),
+    }}
+  >
+    <App />
+  </Context.Provider>,
+
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
