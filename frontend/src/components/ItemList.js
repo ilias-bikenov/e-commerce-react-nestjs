@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useContext } from 'react';
 import { Row } from 'react-bootstrap';
 import { Context } from '..';
-import Item from './item';
+import Item from './Item';
 
 const ItemList = observer(() => {
   const { item } = useContext(Context)

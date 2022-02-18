@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import ItemList from '../components/itemList';
-import TypeBar from '../components/typeBar';
+import ItemList from '../components/ItemList';
+import TypeBar from '../components/TypeBar';
 
 function Shop() {
   return (

@@ -1,10 +1,10 @@
 import Admin from './pages/Admin';
 import Auth from './pages/Auth';
 import Basket from './pages/Basket';
-import Product from './pages/Product';
+import Item from './pages/ItemPage';
 import Shop from './pages/Shop';
 import {
-  ADMIN_ROUTE, BASKET_ROUTE, SIGNIN_ROUTE, PRODUCT_ROUTE, SHOP_ROUTE, SIGNUP_ROUTE,
+  ADMIN_ROUTE, BASKET_ROUTE, SIGNIN_ROUTE, item_ROUTE, SHOP_ROUTE, SIGNUP_ROUTE,
 } from './utils/consts';
 
 export const authRoutes = [
@@ -32,7 +32,7 @@ export const publicRoutes = [
     Component: Auth,
   },
   {
-    path: `${PRODUCT_ROUTE}/:id`,
-    Component: Product,
+    path: `${item_ROUTE}/:id`,
+    Component: Item,
   },
 ];
