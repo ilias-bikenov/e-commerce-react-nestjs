@@ -37,7 +37,7 @@ function Item() {
       </Row>
       <Row className='d-flex flex-column m-3 ms-0'>
         {item.itemInfo.map((info, index) =>
-          <div key={info.id} style={{ background: index % 2 !== 0 ? 'lightgray' : 'transparent', }}>
+          <div key={info.id} style={{ background: index % 2 !== 0 ? '#EAECEB' : 'transparent', }}>
             <Row style={{ 'fontWeight': 'bold' }}>
               {info.title}
             </Row>

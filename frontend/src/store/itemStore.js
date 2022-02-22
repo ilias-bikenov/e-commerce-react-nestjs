@@ -85,7 +85,7 @@ export class ItemStore {
         "itemInfo": []
       },
       {
-        "id": 7,
+        "id": 9,
         "name": "Lenovo Touchpad",
         "price": 5501,
         "rating": 4.2,
@@ -96,7 +96,7 @@ export class ItemStore {
         "itemInfo": []
       },
       {
-        "id": 8,
+        "id": 10,
         "name": "Lenovo Touchpad",
         "price": 5501,
         "rating": 4.2,
@@ -107,7 +107,7 @@ export class ItemStore {
         "itemInfo": []
       },
       {
-        "id": 7,
+        "id": 11,
         "name": "Lenovo Touchpad",
         "price": 5501,
         "rating": 4.2,
@@ -118,7 +118,7 @@ export class ItemStore {
         "itemInfo": []
       },
       {
-        "id": 8,
+        "id": 12,
         "name": "Lenovo Touchpad",
         "price": 5501,
         "rating": 4.2,

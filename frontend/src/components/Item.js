@@ -8,7 +8,6 @@ import { item_ROUTE } from '../utils/consts';
 
 const Item = observer(({ item }) => {
   const navigate = useNavigate();
-  console.log(history);
   return (
     <Col md={3} className={'mt-3'} onClick={() => navigate(`${item_ROUTE}/${item.id}`)}>
       <Card style={{ width: 150, cursor: 'pointer' }} border={'light'}>
