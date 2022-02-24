@@ -7,6 +7,9 @@ import { ValidationPipe } from './pipes/validation.pipe';
 async function bootstrap() {
   const PORT = process.env.PORT || 3000;
   const app = await NestFactory.create(AppModule);
+
+  app.enableCors({ origin: process.env.FRONTEND_URL });
+
   const docConfig = new DocumentBuilder()
     .setTitle('E-commerce')
     .setDescription('REST API documentation')
