@@ -63,11 +63,17 @@ export class ItemService {
         img: fileName,
       });
 
-      await this.itemInfoRepository.create({
-        title: itemDto.title,
-        description: itemDto.description,
-        itemId: item.id,
-      });
+      if (itemDto.itemInfo) {
+        const itemInfo = JSON.parse(itemDto.itemInfo);
+        for await (const info of itemInfo) {
+          this.itemInfoRepository.create({
+            title: info.title,
+            description: info.description,
+            itemId: item.id,
+          });
+        }
+      }
+
       return item;
     } catch (e) {
       Logger.error(e);

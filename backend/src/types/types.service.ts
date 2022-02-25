@@ -8,8 +8,6 @@ export class TypesService {
   constructor(@InjectModel(Type) private typeRepository: typeof Type) {}
 
   async addType(dto: CreateTypeDto) {
-    console.log(dto);
-
     const type = await this.typeRepository.create(dto);
     return type;
   }

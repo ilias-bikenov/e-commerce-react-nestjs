@@ -6,9 +6,12 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Roles } from 'src/auth/roleAuth.decorator';
+import { RolesGuard } from 'src/auth/roles.guard';
 import { CreateItemDto } from './dto/createItem.dto';
 import { ItemService } from './item.service';
 
@@ -22,8 +25,10 @@ export class ItemController {
     return this.itemService.getAllItems(typeId, page, limit);
   }
 
+  @Roles('ADMIN')
+  @UseGuards(RolesGuard)
   @Post()
-  @UseInterceptors(FileInterceptor('image'))
+  @UseInterceptors(FileInterceptor('img'))
   addItem(@Body() itemDto: CreateItemDto, @UploadedFile() image: any) {
     return this.itemService.addItem(itemDto, image);
   }

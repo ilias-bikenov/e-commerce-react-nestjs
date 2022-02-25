@@ -38,6 +38,10 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  async auth(user: User) {
+    return this.generateToken(user);
+  }
+
   private async generateToken(user: User) {
     const payload = { email: user.email, id: user.id, roles: user.roles };
     return {
@@ -47,9 +51,6 @@ export class AuthService {
 
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.usersService.getUserByEmail(userDto.email);
-    console.log(userDto);
-    console.log(user);
-
     const passwordEquals = await bcrypt.compare(
       userDto.password,
       user.password,

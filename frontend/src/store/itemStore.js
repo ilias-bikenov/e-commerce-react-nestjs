@@ -2,159 +2,62 @@ import { makeAutoObservable } from "mobx"
 
 export class ItemStore {
   constructor() {
-    this._types = [
-      { id: 1, name: 'Sofa' },
-      { id: 2, name: 'Closet' }
-    ]
-    this._items = [
-      {
-        "id": 4,
-        "name": "Apple Iphone",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 2,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 1,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 5,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 6,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 7,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 8,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 9,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 10,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 11,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-      {
-        "id": 12,
-        "name": "Lenovo Touchpad",
-        "price": 5501,
-        "rating": 4.2,
-        "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-        "typeId": 4,
-        "createdAt": "2022-02-16T05:47:04.141Z",
-        "updatedAt": "2022-02-16T05:47:04.141Z",
-        "itemInfo": []
-      },
-    ];
+    this._types = [];
+    this._items = [];
     this._selectedType = {};
+    this._page = 1;
+    this._totalCount = 10;
+    this._limit = 3;
     makeAutoObservable(this);
   }
 
   setTypes(types) {
-    this._types = types
+    this._types = types;
   }
 
   setItems(items) {
-    this._items = items
+    this._items = items;
   }
 
   setSelectedType(type) {
-    this._selectedType = type
+    this.setPage(1);
+    this._selectedType = type;
+  }
+
+  setPage(page) {
+    this._page = page;
+  }
+
+  setTotalCount(totalCount) {
+    this._totalCount = totalCount;
+  }
+
+  setLimit(limit) {
+    this._limit = limit;
   }
 
   get types() {
-    return this._types
+    return this._types;
   }
 
   get items() {
-    return this._items
+    return this._items;
+  }
+
+  get page() {
+    return this._page;
+  }
+
+  get totalCount() {
+    return this._totalCount;
+  }
+
+  get limit() {
+    return this._limit;
   }
 
   get selectedType() {
-    return this._selectedType
+    return this._selectedType;
   }
 
 }

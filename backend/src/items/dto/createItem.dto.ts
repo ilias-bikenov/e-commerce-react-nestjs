@@ -14,9 +14,6 @@ export class CreateItemDto {
   @IsNotEmpty({ message: 'Should not be empty' })
   readonly typeId: number;
 
-  @ApiProperty({ description: 'Product info title' })
-  readonly title: string;
-
-  @ApiProperty({ description: 'Product info description' })
-  readonly description: string;
+  @ApiProperty({ description: 'Product info' })
+  readonly itemInfo: string;
 }

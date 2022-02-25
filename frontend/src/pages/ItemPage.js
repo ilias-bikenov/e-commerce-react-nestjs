@@ -1,25 +1,22 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { getItem } from '../http/itemApi';
 
-function Item() {
-  const item = {
-    "id": 4,
-    "name": "Apple Iphone",
-    "price": 5501,
-    "rating": 4.3,
-    "img": "https://cdn1.ozone.ru/s3/multimedia-p/wc1200/6122043985.jpg",
-    "typeId": 4,
-    "createdAt": "2022-02-16T05:47:04.141Z",
-    "updatedAt": "2022-02-16T05:47:04.141Z",
-    "itemInfo": [{ id: 1, title: 'Best functionality', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }, { id: 2, title: 'Lorem ipsum', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' },]
-  };
+const Item = () => {
+  const [item, setItem] = useState({ itemInfo: [] });
+  const { id } = useParams()
+  useEffect(() => {
+    getItem(id).then(data => setItem(data))
+  }, [])
+
   return (
     <Container className='mt-3'>
       <Row>
         <Col md={4}>
-          <Image width={300} height={300} src={item.img} />
+          <Image width={300} height={300} src={process.env.REACT_APP_URL + item.img} />
         </Col>
         <Col md={8} className='align-contents-left'>
           <Row className='d-flex'>

@@ -21,7 +21,6 @@ function Auth() {
       } else {
         data = await signUp(email, password);
       }
-      console.log(user);
       user.setUser(user);
       user.setIsAuth(true);
       navigate(SHOP_ROUTE);
