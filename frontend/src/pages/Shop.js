@@ -12,14 +12,15 @@ const Shop = observer(() => {
 
   useEffect(() => {
     getTypes().then(data => item.setTypes(data))
-    getItems(null, 1, 3).then(data => {
+    getItems(null, 1, item.limit).then(data => {
+      console.log(data);
       item.setItems(data.rows);
       item.setTotalCount(data.count);
     })
   }, [])
 
   useEffect(() => {
-    getItems(item.selectedType.id, item.page, 2).then(data => {
+    getItems(item.selectedType.id, item.page, item.limit).then(data => {
       item.setItems(data.rows);
       item.setTotalCount(data.count);
     })

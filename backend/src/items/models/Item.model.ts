@@ -1,7 +1,9 @@
 import {
+  BelongsTo,
   Column,
   ForeignKey,
   HasMany,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
@@ -40,4 +42,7 @@ export class Item extends Model<Item, ItemCreationAttrs> {
 
   @HasMany(() => ItemInfo)
   itemInfo: ItemInfo[];
+
+  @BelongsTo(() => Type)
+  type: Type;
 }

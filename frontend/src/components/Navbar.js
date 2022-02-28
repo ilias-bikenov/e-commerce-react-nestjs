@@ -18,14 +18,14 @@ const NavBar = observer(() => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <NavLink style={{ color: 'white' }} to={SHOP_ROUTE}>
-          E-commerce
+        <NavLink style={{ color: 'white', fontSize: 28, textDecoration: 'none' }} to={SHOP_ROUTE}>
+          BRIGO
         </NavLink>
         {user.isAuth ? (
           <Nav className="ml-auto" style={{ color: 'white' }}>
-            <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)}>Admin panel</Button>
+            <Button variant={'outline-light'} onClick={() => navigate(ADMIN_ROUTE)}>Админ. панель</Button>
             <Button variant={'outline-light'} onClick={() => logout()} className="ms-2">
-              Sign-Out
+              Выйти
             </Button>
           </Nav>
         ) : (
@@ -34,7 +34,7 @@ const NavBar = observer(() => {
               variant={'outline-light'}
               onClick={() => navigate(SIGNIN_ROUTE)}
             >
-              Sign-In
+              Войти
             </Button>
           </Nav>
         )}

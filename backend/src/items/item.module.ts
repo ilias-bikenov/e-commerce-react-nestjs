@@ -8,11 +8,13 @@ import { ItemService } from './item.service';
 import { ItemInfo } from './models/ItemInfo.model';
 import { Rating } from './models/Rating.model';
 import { FilesModule } from 'src/files/files.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
     SequelizeModule.forFeature([Cart, CartItem, Item, ItemInfo, Rating]),
     FilesModule,
+    AuthModule,
   ],
   controllers: [ItemController],
   providers: [ItemService],

@@ -34,7 +34,7 @@ export class ItemService {
     if (!typeId) {
       //count all items to return to calculate number of pages on frontend
       items = await this.itemRepository.findAndCountAll({
-        include: { model: ItemInfo },
+        include: { all: true },
         limit,
         offset,
       });
@@ -42,7 +42,7 @@ export class ItemService {
 
     if (typeId) {
       items = await this.itemRepository.findAndCountAll({
-        include: { model: ItemInfo },
+        include: { all: true },
         where: { typeId },
         limit,
         offset,
@@ -53,6 +53,8 @@ export class ItemService {
   }
 
   async addItem(itemDto: CreateItemDto, image: any) {
+    console.log('here');
+
     try {
       let fileName;
       if (image) {

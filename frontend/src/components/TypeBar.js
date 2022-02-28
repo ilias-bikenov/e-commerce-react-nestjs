@@ -23,7 +23,7 @@ const TypeBar = observer(() => {
         onClick={() => item.setSelectedType({})}
         active={item.selectedType.id == undefined}
       >
-        All
+        Все товары
       </ListGroup.Item>
     </ListGroup>
   )

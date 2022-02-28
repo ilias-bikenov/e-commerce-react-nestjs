@@ -51,12 +51,12 @@ const CreateItem = observer(({ show, onHide }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Add item</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Добавить товар</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Dropdown>
-            <Dropdown.Toggle>{item.selectedType.name || 'Choose type'}</Dropdown.Toggle>
+            <Dropdown.Toggle>{item.selectedType.name || 'Выберите тип'}</Dropdown.Toggle>
             <Dropdown.Menu>
               {item.types.map((type) => (
                 <Dropdown.Item onClick={() => item.setSelectedType(type)} key={type.id}>{type.name}</Dropdown.Item>
@@ -64,13 +64,13 @@ const CreateItem = observer(({ show, onHide }) => {
             </Dropdown.Menu>
           </Dropdown>
           <Form.Control
-            placeholder="Enter item name"
+            placeholder="Название"
             className="mt-3"
             value={name}
             onChange={e => setName(e.target.value)}
           />
           <Form.Control
-            placeholder="Enter item price"
+            placeholder="Цена"
             className="mt-3"
             type="number"
             value={price}
@@ -78,7 +78,7 @@ const CreateItem = observer(({ show, onHide }) => {
           <Form.Control className="mt-3" type="file" onChange={selectFile} />
           <hr />
           <Button variant="outline-dark" onClick={addInfo}>
-            Add new article
+            Добавить новый абзац
           </Button>
           {info.map((i) => (
             <Row className="mt-3" key={i.number}>
@@ -86,14 +86,14 @@ const CreateItem = observer(({ show, onHide }) => {
                 <Form.Control
                   value={i.title}
                   onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                  placeholder="Enter article title"
+                  placeholder="Введите заголовок характеристики"
                 />
               </Col>
               <Col md={4}>
                 <Form.Control
                   value={i.description}
                   onChange={(e) => changeInfo('description', e.target.value, i.number)}
-                  placeholder="Enter article text"
+                  placeholder="Введите текст характеристики"
                 />
               </Col>
               <Col md={4}>
@@ -101,7 +101,7 @@ const CreateItem = observer(({ show, onHide }) => {
                   variant="outline-danger"
                   onClick={() => removeInfo(i.number)}
                 >
-                  Delete
+                  Удалить
                 </Button>
               </Col>
             </Row>
@@ -110,10 +110,10 @@ const CreateItem = observer(({ show, onHide }) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-danger" onClick={onHide}>
-          Close
+          Закрыть
         </Button>
         <Button variant="outline-success" onClick={addItem}>
-          Add
+          Добавить
         </Button>
       </Modal.Footer>
     </Modal>

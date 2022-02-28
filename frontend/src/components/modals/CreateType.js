@@ -20,19 +20,19 @@ const CreateType = ({ show, onHide }) => {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Add type</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Добавить тип</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Control placeholder={'Enter type name'} value={typeName} onChange={e => setTypeName(e.target.value)} />
+          <Form.Control placeholder={'Введите название'} value={typeName} onChange={e => setTypeName(e.target.value)} />
         </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="outline-danger" onClick={onHide}>
-          Close
+          Закрыть
         </Button>
         <Button variant="outline-success" onClick={addType}>
-          Add
+          Добавить
         </Button>
       </Modal.Footer>
     </Modal>

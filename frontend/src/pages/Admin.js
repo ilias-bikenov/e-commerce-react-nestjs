@@ -9,10 +9,10 @@ const Admin = () => {
   return (
     <Container className="d-flex flex-column">
       <Button variant={'outline-dark'} className="mt-2" onClick={() => setTypeVisible(true)}>
-        Add type
+        Добавить тип
       </Button>
       <Button variant={'outline-dark'} className="mt-2" onClick={() => setItemVisible(true)}>
-        Add item
+        Добавить товар
       </Button>
       <CreateType show={typeVisible} onHide={() => setTypeVisible(false)} />
       <CreateItem show={itemVisible} onHide={() => setItemVisible(false)} />

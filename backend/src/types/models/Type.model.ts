@@ -1,4 +1,11 @@
-import { Column, HasMany, Model, NotNull, Table } from 'sequelize-typescript';
+import {
+  BelongsToMany,
+  Column,
+  HasMany,
+  Model,
+  NotNull,
+  Table,
+} from 'sequelize-typescript';
 import { Item } from 'src/items/models/Item.model';
 
 @Table({

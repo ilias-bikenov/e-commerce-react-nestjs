@@ -25,8 +25,8 @@ export class ItemController {
     return this.itemService.getAllItems(typeId, page, limit);
   }
 
-  @Roles('ADMIN')
-  @UseGuards(RolesGuard)
+  // @Roles('ADMIN')
+  // @UseGuards(RolesGuard)
   @Post()
   @UseInterceptors(FileInterceptor('img'))
   addItem(@Body() itemDto: CreateItemDto, @UploadedFile() image: any) {

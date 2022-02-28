@@ -11,9 +11,9 @@ const Item = observer(({ item }) => {
   return (
     <Col md={3} className={'mt-3'} onClick={() => navigate(`${item_ROUTE}/${item.id}`)}>
       <Card style={{ width: 150, cursor: 'pointer' }} border={'light'}>
-        <Image width={150} height={150} src={`${process.env.REACT_APP_URL}${item.img}`} />
+        <Image width={200} height={150} src={`${process.env.REACT_APP_URL}${item.img}`} />
         <div className='mt-1 d-flex justify-content-between align-items-center'>
-          <div className='text-black-50'>Samsung</div>
+          <div className='text-black-50'>{item.type.name}</div>
           <div className='d-flex align-items-center'>
             <div>{item.rating}</div>
             <FontAwesomeIcon className='ms-1' icon={faStar} />

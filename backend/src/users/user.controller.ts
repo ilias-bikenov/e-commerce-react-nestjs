@@ -14,6 +14,8 @@ export class UserController {
 
   @ApiOperation({ summary: 'Create new user' })
   @ApiResponse({ status: 200, type: User })
+  @Roles('ADMIN')
+  @UseGuards(RolesGuard)
   @Post()
   createUser(@Body() dto: CreateUserDto) {
     return this.userService.createUser(dto);

@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwtAuth.guard';
 import { CreateTypeDto } from './dto/createType.dto';
 import { TypesService } from './types.service';
 
@@ -11,6 +12,7 @@ export class TypesController {
     return this.typesService.getAllTypes();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   addType(@Body() dto: CreateTypeDto) {
     return this.typesService.addType(dto);

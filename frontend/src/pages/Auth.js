@@ -23,9 +23,10 @@ function Auth() {
       }
       user.setUser(user);
       user.setIsAuth(true);
+      console.log(data);
       navigate(SHOP_ROUTE);
     } catch (e) {
-      alert(e);
+      alert('Ошибка авторизации');
     }
   };
 
@@ -36,7 +37,7 @@ function Auth() {
       style={{ height: window.innerHeight - 54 }}
     >
       <Card style={{ width: 600 }} className="p-5 ">
-        <h2 className="m-auto">{isLogin ? 'Sign-In' : 'Sign-Up'}</h2>
+        <h2 className="m-auto">{isLogin ? 'Вход' : 'Регистрация'}</h2>
         <Form className="d-flex flex-column">
           <Form.Control
             className="mt-3"
@@ -46,7 +47,7 @@ function Auth() {
           />
           <Form.Control
             className="mt-3 "
-            placeholder="Password"
+            placeholder="Пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
@@ -54,16 +55,15 @@ function Auth() {
           <Row className="d-flex justify-content-between mt-3">
             {isLogin ? (
               <div>
-                No account? <NavLink to={SIGNUP_ROUTE}>Sign-Up</NavLink>
+                Нет аккаунта? <NavLink to={SIGNUP_ROUTE}>Зарегистрироваться</NavLink>
               </div>
             ) : (
               <div>
-                Already have account?{' '}
-                <NavLink to={SIGNIN_ROUTE}>Sign-In</NavLink>
+                Есть аккаунт? <NavLink to={SIGNIN_ROUTE}>Войти</NavLink>
               </div>
             )}
-            <Button variant={'dark'} onClick={auth}>
-              {isLogin ? 'Sign-In' : 'Sign-Up'}
+            <Button variant={'dark'} onClick={auth} className={'mt-2'}>
+              {isLogin ? 'Войти' : 'Зарегистрироваться'}
             </Button>
           </Row>
         </Form>
