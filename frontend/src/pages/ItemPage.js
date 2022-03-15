@@ -26,10 +26,10 @@ const Item = () => {
             <p className='ms-2' style={{ 'fontWeight': 'bold' }}>{item.rating} <FontAwesomeIcon className='ms-1' icon={faStar} /></p>
           </Row>
           <Row>
-            <p>Price: {item.price} som</p>
+            <p>Цена: {item.price} с.</p>
 
           </Row>
-          <Button variant={"outline-dark"}>Add to Cart</Button>
+          <Button variant={"outline-dark"}>В Корзину</Button>
         </Col>
       </Row>
       <Row className='d-flex flex-column m-3 ms-0'>

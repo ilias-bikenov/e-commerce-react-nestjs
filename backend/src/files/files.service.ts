@@ -5,8 +5,6 @@ import * as uuid from 'uuid';
 
 @Injectable()
 export class FilesService {
-  // constructor(private logger: LoggerService) {}
-
   async createFile(file): Promise<string> {
     try {
       const fileExtension = file.originalname.split('.')[1];
